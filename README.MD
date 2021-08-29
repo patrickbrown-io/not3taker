@@ -38,6 +38,13 @@ Video walkthrough of working application: [YouTube](https://youtu.be/t9Nx2252Ktk
 
 ## Features
 
+- Presented with a landing page with link to notes page
+- Save icon appears to save your note
+- Saved note appears in left hand column with existing notes
+- Clicking a note in the list populates the larger right hand column with your saved note.
+- Clicking the Write icon presents an empty text area to enter note tites and notes text on the right.
+- Delete icon on listed notes removes the note completely!
+
 ## How to Contribute
 
 Send me a message via GitHub and we can connect!
