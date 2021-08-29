@@ -36,21 +36,16 @@ const readAndAppend = (content, file) => {
     }
 )};
 
-const readAndDelete = (content, path) => {
-    fs.readFile(path, 'utf8', (err,data) => {
+const readAndDelete = (content, file) => {
+    fs.readFile(file, 'utf8', (err,data) => {
         if(err) throw err;
         else {
             const parsedNotes = JSON.parse(data);
-            
-            for (let i = 0; i < parsedNotes.length; i++) {
-                if (parsedNotes[i].id === deleteNote) {
-                    parsedNotes.splice([i], 1);
-                    }
-            }
-      console.log(parsedNotes);
-      writeToFile(file,parsedNotes)
+            const forDelete = parsedNotes.findIndex((x) => x.id === content);
+            parsedNotes.splice(forDelete, 1);
+            writeToFile(file,parsedNotes);
         }
-    })
+    });
 };
 ////////////                ///////////
 
@@ -59,11 +54,6 @@ notes.get("", (req, res) => {
     console.log(`${req.method} request for notes`);
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
-
-// notes.get('/api', (req,res) => {
-//     console.log(`${req.method} request received for notes`);
-//     readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
-// });
 
 //  POST
 notes.post("", (req, res) => {
