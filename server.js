@@ -1,7 +1,8 @@
 //require modules
 const express = require('express');
 const path = require('path');
-const apiRouter = require('./routes/apiroutes.js')
+const api = require('./routes/index.js');
+const notes = require('./routes/notes.js')
 
 //init port + express
 const PORT = process.env.PORT || 3001;
@@ -10,7 +11,7 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use('/api', apiRouter);
+app.use('/api', api);
 
 //public
 app.use(express.static("public"));
