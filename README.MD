@@ -26,7 +26,6 @@ To access a saved note, click the note's title in the left hand side. It will po
 
 To delete a saved note, click the Trash Can icon to remove the note.
 
-![Screenshot of Empty Notes App](./assets/screenshot.jpg)
 ![Screenshot of Filled Notes App](./assets/screenshot2.jpg)
 
 ## Walkthrough
