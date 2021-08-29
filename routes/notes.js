@@ -35,6 +35,23 @@ const readAndAppend = (content, file) => {
         }
     }
 )};
+
+const readAndDelete = (content, path) => {
+    fs.readFile(path, 'utf8', (err,data) => {
+        if(err) throw err;
+        else {
+            const parsedNotes = JSON.parse(data);
+            
+            for (let i = 0; i < parsedNotes.length; i++) {
+                if (parsedNotes[i].id === deleteNote) {
+                    parsedNotes.splice([i], 1);
+                    }
+            }
+      console.log(parsedNotes);
+      writeToFile(file,parsedNotes)
+        }
+    })
+};
 ////////////                ///////////
 
 // GET Notes
@@ -73,6 +90,15 @@ notes.post("", (req, res) => {
     } else {
     res.json("Error in POST")
     }
+});
+
+//  DELETE
+notes.delete('/*', (req, res) => {
+    console.log(`${req.method} request recieved`);
+
+    const specifiedNote = req.params[0];
+    readAndDelete(specifiedNote, './db/db.json');
+    res.json('Note successfully deleted');
 });
 
 module.exports = notes;
